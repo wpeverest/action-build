@@ -5,13 +5,13 @@ GENERATE_ZIP=false
 BUILD_PATH="./build"
 
 # Set options based on user input
-if [ -z $1 ]; then
-  GENERATE_ZIP=$1;
+if [ -z "$1" ]; then
+  GENERATE_ZIP="$1"
 fi
 
 # If not configured defaults to repository name
 if [ -z "$PLUGIN_SLUG" ]; then
-	PLUGIN_SLUG=${GITHUB_REPOSITORY#*/}
+  PLUGIN_SLUG=${GITHUB_REPOSITORY#*/}
 fi
 
 # Set GitHub "path" output
@@ -24,7 +24,7 @@ echo "Installing PHP and JS dependencies..."
 npm install
 composer install || exit "$?"
 echo "Running JS Build..."
-npm run build || exit "$?"
+npm run build:core || exit "$?"
 echo "Cleaning up PHP dependencies..."
 composer install --no-dev || exit "$?"
 
