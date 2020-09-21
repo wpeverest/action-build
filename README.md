@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         id: build
-        uses: wpeverest/action-build@master
+        uses: wpeverest/action-build@v2
         with:
           generate-zip: true
       - name: Upload release asset
