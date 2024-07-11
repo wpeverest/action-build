@@ -21,7 +21,7 @@ echo "::set-output name=path::$DEST_PATH"
 cd "$GITHUB_WORKSPACE" || exit
 
 echo "Installing PHP and JS dependencies..."
-npm install
+npm install --force
 composer install || exit "$?"
 echo "Running JS Build..."
 npm run build:core || exit "$?"
