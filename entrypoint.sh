@@ -24,7 +24,7 @@ echo "Installing PHP and JS dependencies..."
 npm install --force
 composer install || exit "$?"
 echo "Running JS Build..."
-npm run build:core || exit "$?"
+npm run build || exit "$?"
 echo "Cleaning up PHP dependencies..."
 composer install --no-dev || exit "$?"
 
