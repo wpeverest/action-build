@@ -21,6 +21,7 @@ echo "::set-output name=path::$DEST_PATH"
 cd "$GITHUB_WORKSPACE" || exit
 
 echo "Installing PHP and JS dependencies..."
+chmod +x ./bin/build-zip.sh
 npm install
 composer install || exit "$?"
 echo "Running JS Build..."
