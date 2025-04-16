@@ -16,7 +16,7 @@ on:
 jobs:
   build:
     name: Build release and save asset
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04.02
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
