@@ -20,11 +20,27 @@ echo "::set-output name=path::$DEST_PATH"
 
 cd "$GITHUB_WORKSPACE" || exit
 
+# Detect package manager based on lock files
+if [ -f "pnpm-lock.yaml" ]; then
+  PACKAGE_MANAGER="pnpm"
+  INSTALL_CMD="pnpm install"
+  RUN_CMD="pnpm run"
+elif [ -f "yarn.lock" ]; then
+  PACKAGE_MANAGER="yarn"
+  INSTALL_CMD="yarn install"
+  RUN_CMD="yarn run"
+else
+  PACKAGE_MANAGER="npm"
+  INSTALL_CMD="npm install"
+  RUN_CMD="npm run"
+fi
+
+echo "Detected package manager: $PACKAGE_MANAGER"
 echo "Installing PHP and JS dependencies..."
-npm install
+$INSTALL_CMD
 composer install || exit "$?"
 echo "Running JS Build..."
-npm run build:core || exit "$?"
+$RUN_CMD build:core || exit "$?"
 echo "Cleaning up PHP dependencies..."
 composer install --no-dev || exit "$?"
 
