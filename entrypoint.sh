@@ -36,7 +36,7 @@ echo "Installing PHP and JS dependencies..."
 $INSTALL_CMD
 composer install || exit "$?"
 echo "Running JS Build..."
-$RUN_CMD build:core || exit "$?"
+$RUN_CMD build || exit "$?"
 echo "Cleaning up PHP dependencies..."
 composer install --no-dev || exit "$?"
 
