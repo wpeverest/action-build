@@ -8,7 +8,6 @@ RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get update && apt-get install -y nodejs php
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN corepack enable && corepack prepare pnpm@9 --activate
-RUN npm install -g yarn
 
 COPY entrypoint.sh /entrypoint.sh
 

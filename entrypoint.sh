@@ -25,10 +25,6 @@ if [ -f "pnpm-lock.yaml" ]; then
   PACKAGE_MANAGER="pnpm"
   INSTALL_CMD="pnpm install"
   RUN_CMD="pnpm run"
-elif [ -f "yarn.lock" ]; then
-  PACKAGE_MANAGER="yarn"
-  INSTALL_CMD="yarn install"
-  RUN_CMD="yarn run"
 else
   PACKAGE_MANAGER="npm"
   INSTALL_CMD="npm install"
