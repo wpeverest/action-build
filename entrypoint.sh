@@ -36,7 +36,13 @@ echo "Installing PHP and JS dependencies..."
 $INSTALL_CMD
 composer install || exit "$?"
 echo "Running JS Build..."
-$RUN_CMD build:pro || exit "$?"
+# Check if package name contains "pro" and use appropriate build command
+if echo "$PLUGIN_SLUG" | grep -qi "pro"; then
+  BUILD_CMD="build:pro"
+else
+  BUILD_CMD="build"
+fi
+$RUN_CMD $BUILD_CMD || exit "$?"
 echo "Cleaning up PHP dependencies..."
 composer install --no-dev || exit "$?"
 
