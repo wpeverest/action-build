@@ -18,6 +18,8 @@ fi
 DEST_PATH="$BUILD_PATH/$PLUGIN_SLUG"
 echo "::set-output name=path::$DEST_PATH"
 
+git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
 cd "$GITHUB_WORKSPACE" || exit
 
 # Detect package manager based on lock files
